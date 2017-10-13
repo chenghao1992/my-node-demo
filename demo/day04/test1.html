@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <script src="../jquery-2.1.1.min.js"></script>
+</head>
+<body>
+    <button onclick="getData()">获取数据</button>
+    <div id="box">初始化数据</div>
+<script>
+    function getData() {
+        $.ajax({
+            url:'http://localhost:1337/',
+            success:function (data) {
+                console.log(JSON.parse(data))
+                $('#box').html(JSON.parse(data).name)
+            }
+        })
+    }
+</script>
+</body>
+</html>
