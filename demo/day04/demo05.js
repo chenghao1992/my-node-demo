@@ -6,9 +6,12 @@ db.open(function (err,db) {
     else {
         console.log('成功连接数据库')
         db.collection('test',function (err,collection) {
-            collection.insert({username:'xys',age:23},function (err,docs) {})
-            collection.insert({username:'程浩',age:25},function (err,docs) {
-                console.log(docs)
+            if(err)throw err;
+            collection.find({}).toArray(function (err,docs){
+                console.log("查询到的所有数据：",docs);
+            })
+            collection.find({username:'程浩'}).toArray(function (err,docs){
+                console.log("查询到的数据：",docs);
                 db.close();
             })
         })
